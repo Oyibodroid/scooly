@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer {
+  * {
+    @apply text-gray-900;
+  }
+
+  .input,
+  textarea {
+    @apply w-full outline outline-1 grow outline-gray-400 indent-4 rounded-sm basis-full text-gray-950 focus:bg-inherit;
+  }
+
+  .card {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    @apply flex p-4 rounded-lg bg-white items-center justify-between h-40 col-span-1;
+  }
+
+  .card-long {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    @apply flex p-4 rounded-lg bg-white items-center justify-between h-80;
+  }
+
+  .dash-text {
+    @apply font-bold text-indigo-600 text-4xl;
+  }
+
+  .main {
+    @apply p-4 lg:ml-4;
+  }
+
+  .student--table {
+    @apply grid place-content-center justify-between p-4 items-center;
+    min-width: 1034px;
+    width: 100%;
+    grid-template-columns: 0.5fr 2fr 0.7fr 1fr 1fr 0.5fr 0.5fr;
+  }
+
+  .student--table p {
+    /* @apply py-4; */
+  }
+
+  /* Remove arrows for WebKit (Chrome, Safari, newer Edge) */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .teacher--table {
+    @apply grid place-content-center justify-between p-4 min-w-[1034px];
+    grid-template-columns: 0.3fr 1fr 2fr 0.5fr 0.5fr 1fr 1fr;
+  }
+
+  .heading {
+    @apply text-xl font-bold;
+  }
+
+  .flex-norm {
+    @apply flex items-center justify-between;
+  }
+
+  .label {
+    @apply block -top-1/4 bg-white absolute text-sm left-3 px-1 text-gray-400 flex-norm;
+  }
+}
+
+.input::placeholder {
+  color: #222;
+}

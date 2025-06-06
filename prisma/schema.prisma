@@ -1,0 +1,459 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model about {
+  id       Int    @id @default(autoincrement())
+  name     String @db.VarChar(100)
+  motto    String @db.VarChar(100)
+  address  String @db.VarChar(100)
+  about    String @db.VarChar(100)
+  schoolid String @db.VarChar(100)
+}
+
+model announcement {
+  id           Int    @id @default(autoincrement())
+  announcement String @db.VarChar(556)
+  schoolid     String @db.VarChar(100)
+}
+
+model assignment {
+  id         Int      @id @default(autoincrement())
+  subject    String   @db.VarChar(100)
+  assignment String   @db.VarChar(100)
+  class      String   @db.VarChar(100)
+  submit     DateTime @db.Date
+  teacherid  String   @db.VarChar(100)
+  schoolid   String   @db.VarChar(100)
+}
+
+model attendance {
+  id        Int      @id @default(autoincrement())
+  studentid String   @db.VarChar(100)
+  firstname String   @db.VarChar(100)
+  class     String   @db.VarChar(100)
+  date      DateTime @db.Date
+  status    String   @db.VarChar(100)
+  schoolid  String   @db.VarChar(100)
+}
+
+model courses {
+  id        Int    @id @default(autoincrement())
+  subject   String @db.VarChar(556)
+  studentid String @db.VarChar(100)
+  class     String @db.VarChar(100)
+  semester  String @db.VarChar(100)
+  section   String @db.VarChar(100)
+  semsec    String @db.VarChar(100)
+  schoolid  String @db.VarChar(100)
+}
+
+model details {
+  id       Int    @id @default(autoincrement())
+  section  String @db.VarChar(50)
+  semester String @db.VarChar(50)
+  jss1     Int
+  jss2     Int
+  jss3     Int
+  Ss1      Int
+  Ss2      Int
+  Ss3      Int
+  semsec   String @db.VarChar(100)
+  schoolid String @db.VarChar(100)
+}
+
+model juniour_results {
+  id              Int    @id @default(autoincrement())
+  Mathematics     Int
+  English         Int
+  Yoruba          Int
+  BasicScience    Int
+  SocialStudies   Int
+  FineArt         Int
+  Agriculture     Int
+  Civic           Int
+  CRK             Int
+  PHE             Int
+  BusinessStudies Int
+  French          Int
+  Computer        Int
+  HomeEconomics   Int
+  Music           Int
+  BasicTech       Int
+  studentid       String @db.VarChar(100)
+  semester        String @db.VarChar(100)
+  section         String @db.VarChar(100)
+  semsec          String @db.VarChar(100)
+  class           String @db.VarChar(100)
+  schoolid        String @db.VarChar(100)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model juniour_test {
+  id              Int
+  Mathematics     Int
+  English         Int
+  Yoruba          Int
+  BasicScience    Int
+  SocialStudies   Int
+  FineArt         Int
+  Agriculture     Int
+  Civic           Int
+  CRK             Int
+  PHE             Int
+  BusinessStudies Int
+  French          Int
+  Computer        Int
+  HomeEconomics   Int
+  Music           Int
+  BasicTech       Int
+  studentid       String @db.VarChar(100)
+  semester        String @db.VarChar(100)
+  section         String @db.VarChar(100)
+  semsec          String @db.VarChar(100)
+  class           String @db.VarChar(100)
+  schoolid        String @db.VarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model nursery {
+  id            Int
+  Mathematics   Int
+  English       Int
+  Quantitative  Int
+  Verbal        Int
+  Drawing       Int
+  Writing       Int
+  Yoruba        Int
+  BasicScience  Int
+  SocialStudies Int
+  FineArt       Int
+  Agriculture   Int
+  Civic         Int
+  CRK           Int
+  PHE           Int
+  French        Int
+  HomeEconomics Int
+  Music         Int
+  poem          Int
+  studentid     String @db.VarChar(100)
+  semester      String @db.VarChar(100)
+  section       String @db.VarChar(100)
+  semsec        String @db.VarChar(100)
+  class         String @db.VarChar(100)
+  schoolid      String @db.VarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model nursery_test {
+  id            Int
+  Mathematics   Int
+  English       Int
+  Quantitative  Int
+  Verbal        Int
+  Drawing       Int
+  Writing       Int
+  Yoruba        Int
+  BasicScience  Int
+  SocialStudies Int
+  FineArt       Int
+  Agriculture   Int
+  Civic         Int
+  CRK           Int
+  PHE           Int
+  French        Int
+  HomeEconomics Int
+  Music         Int
+  poem          Int
+  studentid     String @db.VarChar(100)
+  semester      String @db.VarChar(100)
+  section       String @db.VarChar(100)
+  semsec        String @db.VarChar(100)
+  class         String @db.VarChar(100)
+  schoolid      String @db.VarChar(100)
+
+  @@ignore
+}
+
+model payment1 {
+  id          Int      @id @default(autoincrement())
+  studentid   String   @db.VarChar(50)
+  amount      Int
+  status      String   @db.VarChar(123)
+  date        DateTime @db.Date
+  debt        Int
+  outstanding Int
+  class       String   @db.VarChar(100)
+  semsec      String   @db.VarChar(100)
+  schoolid    String   @db.VarChar(100)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model primary {
+  id              Int
+  Mathematics     Int
+  English         Int
+  Quantitative    Int
+  Verbal          Int
+  Drawing         Int
+  Writing         Int
+  Yoruba          Int
+  BasicScience    Int
+  SocialStudies   Int
+  FineArt         Int
+  Agriculture     Int
+  Civic           Int
+  CRK             Int
+  PHE             Int
+  BusinessStudies Int
+  French          Int
+  Computer        Int
+  HomeEconomics   Int
+  Music           Int
+  BasicTech       Int
+  studentid       String @db.VarChar(100)
+  semester        String @db.VarChar(100)
+  section         String @db.VarChar(100)
+  semsec          String @db.VarChar(100)
+  class           String @db.VarChar(100)
+  schoolid        String @db.VarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model primary1 {
+  id              Int
+  Mathematics     Int
+  English         Int
+  Quantitative    Int
+  Verbal          Int
+  Drawing         Int
+  Writing         Int
+  Yoruba          Int
+  BasicScience    Int
+  SocialStudies   Int
+  FineArt         Int
+  Agriculture     Int
+  Civic           Int
+  CRK             Int
+  PHE             Int
+  BusinessStudies Int
+  French          Int
+  Computer        Int
+  HomeEconomics   Int
+  Music           Int
+  BasicTech       Int
+  studentid       String @db.VarChar(100)
+  semester        String @db.VarChar(100)
+  section         String @db.VarChar(100)
+  semsec          String @db.VarChar(100)
+  class           String @db.VarChar(100)
+  schoolid        String @db.VarChar(100)
+  sector          String @db.VarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model primary_test {
+  id              Int
+  Mathematics     Int
+  English         Int
+  Quantitative    Int
+  Verbal          Int
+  Drawing         Int
+  Writing         Int
+  Yoruba          Int
+  BasicScience    Int
+  SocialStudies   Int
+  FineArt         Int
+  Agriculture     Int
+  Civic           Int
+  CRK             Int
+  PHE             Int
+  BusinessStudies Int
+  French          Int
+  Computer        Int
+  HomeEconomics   Int
+  Music           Int
+  BasicTech       Int
+  studentid       String @db.VarChar(100)
+  semester        String @db.VarChar(100)
+  section         String @db.VarChar(100)
+  semsec          String @db.VarChar(100)
+  class           String @db.VarChar(100)
+  schoolid        String @db.VarChar(100)
+
+  @@ignore
+}
+
+model questions {
+  id             Int    @id @default(autoincrement())
+  question       String @db.VarChar(100)
+  option1        String @db.VarChar(100)
+  option2        String @db.VarChar(100)
+  option3        String @db.VarChar(100)
+  option4        String @db.VarChar(100)
+  correct_answer String @db.VarChar(100)
+  subject        String @db.VarChar(100)
+  class          String @db.VarChar(100)
+}
+
+model result {
+  id          Int    @id @default(autoincrement())
+  Mathematics Int
+  English     Int
+  Biology     Int
+  Physics     Int
+  Chemistry   Int
+  Agriculture Int
+  Economics   Int
+  Geography   Int
+  Accounting  Int
+  Government  Int
+  Literature  Int
+  Computer    Int
+  Civic       Int
+  Business    Int
+  Commerce    Int
+  CRK         Int
+  Marketing   Int
+  semester    String @db.VarChar(100)
+  section     String @db.VarChar(100)
+  studentid   String @db.VarChar(100)
+  semsec      String @db.VarChar(100)
+  class       String @db.VarChar(100)
+  schoolid    String @db.VarChar(100)
+}
+
+model result2 {
+  id       Int    @id @default(autoincrement())
+  release  String @db.VarChar(100)
+  semester String @db.VarChar(100)
+  section  String @db.VarChar(50)
+  semsec   String @db.VarChar(100)
+  schoolid String @db.VarChar(100)
+}
+
+model scheme {
+  week1     String @db.VarChar(100)
+  week2     String @db.VarChar(100)
+  week3     String @db.VarChar(100)
+  week4     String @db.VarChar(100)
+  week5     String @db.VarChar(100)
+  week6     String @db.VarChar(100)
+  week7     String @db.VarChar(100)
+  week8     String @db.VarChar(100)
+  week9     String @db.VarChar(100)
+  week10    String @db.VarChar(100)
+  week11    String @db.VarChar(100)
+  week12    String @db.VarChar(100)
+  teacherid String @db.VarChar(100)
+  subject   String @db.VarChar(100)
+  class     String @db.VarChar(100)
+  semester  String @db.VarChar(100)
+  section   String @db.VarChar(100)
+  id        Int    @id @default(autoincrement())
+  semsec    Int
+  schoolid  String @db.VarChar(100)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model send_message {
+  id       Int
+  message  String @db.VarChar(700)
+  receiver String @db.VarChar(100)
+  sender   String @db.VarChar(100)
+  schoolid String @db.VarChar(100)
+
+  @@ignore
+}
+
+model students {
+  id          Int      @id @default(autoincrement())
+  firstname   String   @db.VarChar(50)
+  lastname    String   @db.VarChar(50)
+  email       String   @db.VarChar(100)
+  password    String   @db.VarChar(199)
+  origin      String   @db.VarChar(388)
+  phone       Int
+  course      String   @db.VarChar(2233)
+  class       String   @db.VarChar(233)
+  date        DateTime @db.Date
+  photo       String   @db.VarChar(100)
+  address     String   @db.VarChar(100)
+  studentid   String   @db.VarChar(100)
+  parent_id   String   @map("parent-id") @db.VarChar(100)
+  debt        Int
+  outstanding String   @db.VarChar(100)
+  status      String   @db.VarChar(100)
+  gender      String   @db.VarChar(100)
+  schoolid    String   @db.VarChar(100)
+}
+
+model subjects {
+  id         Int    @id @default(autoincrement())
+  subject    String @db.VarChar(100)
+  department String @db.VarChar(100)
+  code       String @db.VarChar(100)
+  class      String @db.VarChar(100)
+  schoolid   String @db.VarChar(100)
+}
+
+model teachers {
+  id         Int    @id @default(autoincrement())
+  firstname  String @db.VarChar(50)
+  lastname   String @db.VarChar(50)
+  class      String @db.VarChar(100)
+  department String @db.VarChar(199)
+  origin     String @db.VarChar(388)
+  teacherid  String @db.VarChar(122)
+  password   String @db.VarChar(2233)
+  salary     Int
+  status     String @db.VarChar(100)
+  gender     String @db.VarChar(100)
+  schoolid   String @db.VarChar(100)
+}
+
+model test1 {
+  id          Int    @id @default(autoincrement())
+  Mathematics Int
+  English     Int
+  Biology     Int
+  Physics     Int
+  Chemistry   Int
+  Agriculture Int
+  Economics   Int
+  Geography   Int
+  Accounting  Int
+  Government  Int
+  Literature  Int
+  Computer    Int
+  Civic       Int
+  Business    Int
+  Commerce    Int
+  CRK         Int
+  Marketing   Int
+  semester    String @db.VarChar(100)
+  section     String @db.VarChar(100)
+  studentid   String @db.VarChar(100)
+  semsec      String @db.VarChar(100)
+  schoolid    String @db.VarChar(100)
+}
+
+model tutors {
+  id        Int    @id @default(autoincrement())
+  subject   String @db.VarChar(100)
+  teacherid String @db.VarChar(100)
+  schoolid  String @db.VarChar(100)
+}
