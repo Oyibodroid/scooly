@@ -1,3 +1,5 @@
+// app/Admin/Teacher/Add/page.jsx
+
 "use client";
 import Button from "@components/Button";
 import { Eye, EyeClosed } from "lucide-react";
@@ -22,11 +24,50 @@ export default function AddStudentPage() {
 
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    validate && alert("submitted")
+async function handleSubmit(e) {
+  e.preventDefault();
 
+  try {
+    const response = await fetch('/api/add-teacher', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    let confirmation
+
+    const data = await response.json();
+    console.log('✅ Form submitted successfully:', data);
+    alert("Form submitted successfully!");
+    confirmation = true
+
+    // Reset form data to initial empty values
+    setFormData({
+      FirstName: "",
+      LastName: "",
+      Password: "",
+      Salary: "",
+      State: "",
+      Sector: "",
+      Role: "",
+      Department: "",
+      Class: "",
+      Gender: "",
+    });
+
+  } catch (error) {
+    console.error('❌ Error submitting form:', error);
+    alert("Error submitting form!");
   }
+}
+
+
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -69,6 +110,8 @@ export default function AddStudentPage() {
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit} noValidate>
+
+      
       <div className="flex flex-col gap-6 mt-8 w-full lg:flex-row lg:flex-norm">
         <div className="relative w-full">
           <input
@@ -76,6 +119,7 @@ export default function AddStudentPage() {
             type="text"
             name="FirstName"
             onChange={handleChange}
+            value={formData.FirstName}
           />
 
           <p className="label">
@@ -87,6 +131,7 @@ export default function AddStudentPage() {
             className="input py-3"
             type="text"
             name="LastName"
+            value={formData.LastName}
             onChange={handleChange}
           />
 
@@ -100,6 +145,7 @@ export default function AddStudentPage() {
             type={isShown ? "text" : "password"}
             name="Password"
             onChange={handleChange}
+            value={formData.Password}
           />
 
           <p className="label">
@@ -122,6 +168,7 @@ export default function AddStudentPage() {
             type="number"
             name="Salary"
             onChange={handleChange}
+            value={formData.Salary}
           />
 
           <p className="label">
@@ -134,6 +181,7 @@ export default function AddStudentPage() {
             type="text"
             name="State"
             onChange={handleChange}
+            value={formData.State}
           />
 
           <p className="label">
@@ -151,7 +199,7 @@ export default function AddStudentPage() {
             onChange={handleChange}
             value={formData.Sector}
           >
-            <option disabled>--Choose--</option>
+            <option value="">--Choose--</option>
             <option value="Kindergarten">Kindergarten</option>
             <option value="Nursery">Nursery</option>
             <option value="Primary">Primary</option>
