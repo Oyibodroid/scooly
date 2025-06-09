@@ -4,7 +4,7 @@ import AddStudentPage from "./page";
 
 export default function AddStudent() {
   return (
-    <div className="main lg:p-8">
+    <div className="main relative lg:p-8">
       <div className="flex-norm">
         <p className="heading text-2xl">Add Teachers</p>
         <Breadcrumb />

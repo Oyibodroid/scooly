@@ -2,8 +2,10 @@
 
 "use client";
 import Button from "@components/Button";
+import Lottie from "lottie-react";
 import { Eye, EyeClosed } from "lucide-react";
 import { useState } from "react";
+import animationData from "@public/icons/VerifiedIcon.json";
 
 export default function AddStudentPage() {
   const [formData, setFormData] = useState({
@@ -19,55 +21,53 @@ export default function AddStudentPage() {
     Gender: "",
   });
 
+  function validate() {}
 
-  function validate(){
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-  }
+    try {
+      const response = await fetch("/api/add-teacher", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-async function handleSubmit(e) {
-  e.preventDefault();
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-  try {
-    const response = await fetch('/api/add-teacher', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+      const data = await response.json();
+      console.log(" Form submitted successfully:", data);
+      // alert("Form submitted successfully!");
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+      setModal(true)
+      setTimeout(() => {
+        setModal(false)
+      }, 1500);
+
+      // Reset form data to initial empty values
+      setFormData({
+        FirstName: "",
+        LastName: "",
+        Password: "",
+        Salary: "",
+        State: "",
+        Sector: "",
+        Role: "",
+        Department: "",
+        Class: "",
+        Gender: "",
+      });
+    } catch (error) {
+      console.error("❌ Error submitting form:", error);
+      alert("Error submitting form!");
     }
-
-    let confirmation
-
-    const data = await response.json();
-    console.log('✅ Form submitted successfully:', data);
-    alert("Form submitted successfully!");
-    confirmation = true
-
-    // Reset form data to initial empty values
-    setFormData({
-      FirstName: "",
-      LastName: "",
-      Password: "",
-      Salary: "",
-      State: "",
-      Sector: "",
-      Role: "",
-      Department: "",
-      Class: "",
-      Gender: "",
-    });
-
-  } catch (error) {
-    console.error('❌ Error submitting form:', error);
-    alert("Error submitting form!");
   }
-}
 
-
+  const [modal, setModal] = useState(false);
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -110,8 +110,6 @@ async function handleSubmit(e) {
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit} noValidate>
-
-      
       <div className="flex flex-col gap-6 mt-8 w-full lg:flex-row lg:flex-norm">
         <div className="relative w-full">
           <input
@@ -283,6 +281,27 @@ async function handleSubmit(e) {
       <button className="bg-indigo-600 text-white hover:bg-indigo-500 w-fit py-2 px-6 font-medium transition-all whitespace-nowrap rounded-3xl">
         Submit
       </button>
+
+      {
+        modal && 
+        <div className="bg-white/10 backdrop-blur-sm h-full w-[100vw] fixed p-0 m-0 inset-0"></div>
+      }
+      {modal && (
+        <div className="w-60">
+          <div className="pl-6 fixed top-[29%] rounded-full w-80 h-1/2 right-[40%] bg-indigo-900/10 backdrop-blur-sm">
+            <div className="grid place-content-center m-0 p-0 h-full w-full">
+              <Lottie
+                animationData={animationData}
+                loop={true}
+                autoplay={true}
+                style={{ height: 150, width: 150 }}
+              />
+
+              <p>Teacher Successfully Added</p>
+            </div>
+          </div>
+        </div>
+      )}
     </form>
   );
 }
