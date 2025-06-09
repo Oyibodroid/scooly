@@ -287,17 +287,18 @@ export default function AddStudentPage() {
         <div className="bg-white/10 backdrop-blur-sm h-full w-[100vw] fixed p-0 m-0 inset-0"></div>
       }
       {modal && (
-        <div className="w-60">
-          <div className="pl-6 fixed top-[29%] rounded-full w-80 h-1/2 right-[40%] bg-indigo-900/10 backdrop-blur-sm">
-            <div className="grid place-content-center m-0 p-0 h-full w-full">
+        <div className="fixed top-[50%] right-[50%] translate-x-1/2 -translate-y-1/2 overflow-hidden">
+          <div className=" ">
+            <div className="flex flex-col items-center m-0 p-0 h-full w-full">
               <Lottie
+              className="rounded-full bg-indigo-900/10 backdrop-blur-sm"
                 animationData={animationData}
                 loop={true}
                 autoplay={true}
                 style={{ height: 150, width: 150 }}
               />
 
-              <p>Teacher Successfully Added</p>
+              <p className="font-bold text-center">Teacher Successfully Added</p>
             </div>
           </div>
         </div>
