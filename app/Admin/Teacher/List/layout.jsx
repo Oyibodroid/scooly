@@ -26,8 +26,8 @@ const TeachersLayout = () => {
 
           <div className="flex gap-4">
             <Button variant="blue">Download PDF</Button>
-            <Button className=" rounded-full" variant="blue">
-              <PlusIcon className="stroke-white" />
+            <Button className=" rounded-full"  variant="blue">
+              <a href="./Add"><PlusIcon className="stroke-white" /></a>
             </Button>
           </div>
         </div>

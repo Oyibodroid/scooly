@@ -66,8 +66,15 @@
   .label {
     @apply block -top-1/4 bg-white absolute text-sm left-3 px-1 text-gray-400 flex-norm;
   }
+
+
 }
 
+@component{
+  .errorMsg {
+    @apply text-red-500 italic text-sm;
+  }  
+}
 .input::placeholder {
   color: #222;
 }
