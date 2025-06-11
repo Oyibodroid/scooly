@@ -39,12 +39,13 @@ export default function AddStudentPage() {
       formData.Class === ""
     ) {
       newErrors.Class = "teacher must have a class";
-      alert(formData.Role);
     }
 
     if (formData.Sector == "") newErrors.Sector = "must be in a sector";
     if (formData.State === "") newErrors.State = "field is required";
     if (formData.Gender === "") newErrors.Gender = "choose your gender";
+    if ((formData.Class === ("SSS 1" || "SSS 2" || "SSS 3")) && formData.Department == "")
+      newErrors.Department = "choose your department";
 
     setErrors(newErrors);
 
@@ -68,9 +69,8 @@ export default function AddStudentPage() {
           throw new Error("Network response was not ok");
         }
 
-        const data = await response.json();
-        console.log(" Form submitted successfully:", data);
-        alert("Form submitted successfully!");
+        // const data = await response.json();
+        // console.log(" Form submitted successfully:", data);
 
         setModal(true);
         setTimeout(() => {
@@ -93,7 +93,6 @@ export default function AddStudentPage() {
         });
       } catch (error) {
         console.error("❌ Error submitting form:", error);
-        alert("Error submitting form!");
       }
     }
   }
@@ -134,6 +133,9 @@ export default function AddStudentPage() {
           <option value="Art">Art</option>
           <option value="Commercial">Commercial</option>
         </select>
+        {errors.Department && (
+          <p className="errorMsg text-red-500">{errors.Department}</p>
+        )}
       </div>
     );
   }

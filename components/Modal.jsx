@@ -7,7 +7,7 @@ export default function Modal(props) {
       <div className=" ">
         <div className="flex flex-col items-center m-0 p-0 h-full w-full">
           <Lottie
-            className={`rounded-full bg-indigo-200/10 backdrop-blur-sm`}
+            className={`rounded-full bg-indigo-200/50 backdrop-blur-sm`}
             animationData={props.animationData}
             loop={true}
             autoplay={true}
