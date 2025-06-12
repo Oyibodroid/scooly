@@ -7,7 +7,7 @@ import { useState } from "react";
 import animationData from "@public/icons/VerifiedIcon.json";
 import Modal from "@components/Modal";
 
-export default function AddStudentPage() {
+export default function AddTeacherPage() {
   const [formData, setFormData] = useState({
     FirstName: "",
     LastName: "",
@@ -230,7 +230,7 @@ export default function AddStudentPage() {
           />
 
           <p className="label">
-            Salary <span className="text-red-500">*</span>
+            Salary
           </p>
         </div>
         <div className="relative -z-100 w-full">
@@ -243,7 +243,7 @@ export default function AddStudentPage() {
           />
 
           <p className="label">
-            State of Origin <span className="text-red-500">*</span>
+            State of Origin 
           </p>
         </div>
 
@@ -356,9 +356,7 @@ export default function AddStudentPage() {
       )}
       <button
         type="submit"
-        className={`bg-indigo-600 text-white hover:bg-indigo-500 
-                    w-fit py-2 px-6 font-medium transition-all 
-                    whitespace-nowrap rounded-3xl`}
+        className="submit"
       >
         Submit
       </button>

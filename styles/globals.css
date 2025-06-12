@@ -63,17 +63,19 @@
     @apply flex items-center justify-between;
   }
 
+  .errorMsg {
+    @apply text-red-500 italic text-sm;
+  }
+
   .label {
     @apply block -top-1/4 bg-white absolute text-sm left-3 px-1 text-gray-400 flex-norm;
   }
-
-
 }
 
-@component{
-  .errorMsg {
-    @apply text-red-500 italic text-sm;
-  }  
+.submit {
+  @apply bg-indigo-600 text-white hover:bg-indigo-500 
+            w-fit py-2 px-6 font-medium transition-all 
+            whitespace-nowrap rounded-3xl;
 }
 .input::placeholder {
   color: #222;

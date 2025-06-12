@@ -1,6 +1,6 @@
 import Breadcrumb from "@components/Breadcrumb";
 import "@styles/globals.css";
-import AddStudentPage from "./page";
+import AddTeacherPage from "./page";
 
 export default function AddStudent() {
   return (
@@ -11,7 +11,7 @@ export default function AddStudent() {
       </div>
       <div className="bg-white mt-8 py-8 px-4 rounded-lg">
         <p className="heading">Basic Details</p>
-        <AddStudentPage />
+        <AddTeacherPage />
       </div>
     </div>
   );
