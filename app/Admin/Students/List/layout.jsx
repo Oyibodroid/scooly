@@ -4,7 +4,7 @@ import { PlusIcon } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import Breadcrumb from "@components/Breadcrumb";
 import students from "@data/students.js";
-import StudentTable from "./StudentTable";
+import StudentTable from "../../../../components/StudentTable";
 import "@/styles/globals.css"
 
 export default function StudentLayout() {

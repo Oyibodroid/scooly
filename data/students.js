@@ -11,15 +11,15 @@ export default
   },
   {
     "id": 3,
-    "username": "Oyibo Daniel Oghenekevwe",
+    "username": "Marvel Oghenekevwe",
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
-    "gender": "Male"
+    "gender": "Female"
   },
   {
     "id": 309,
-    "username": "Oyibo Daniel Oghenekevwe",
+    "username": "Oyibo Jonathan",
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
@@ -27,7 +27,7 @@ export default
   },
   {
     "id": 398,
-    "username": "Oyibo Daniel Oghenekevwe",
+    "username": "Ohis Vic",
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
@@ -35,23 +35,23 @@ export default
   },
   {
     "id": 323,
-    "username": "Oyibo Daniel Oghenekevwe",
+    "username": "Ohis Davina",
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
-    "gender": "Male"
+    "gender": "Female"
   },
   {
     "id": 342,
-    "username": "Oyibo Daniel Oghenekevwe",
-    "department": "science",
+    "username": "Oyibo Grace",
+    "department": "Commercial",
     "year": "SSS 2",
     "phone": "07079806360",
-    "gender": "Male"
+    "gender": "Female"
   },
   {
     "id": 31,
-    "username": "Oyibo Daniel Oghenekevwe",
+    "username": "Ohis Godswil",
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
@@ -59,19 +59,19 @@ export default
   },
   {
     "id": 5,
-    "username": "Oyibo Daniel Oghenekevwe",
+    "username": "Tobi Kaftan",
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
-    "gender": "Male"
+    "gender": "Female"
   },
   {
     "id": 7,
-    "username": "Oyibo Daniel Oghenekevwe",
-    "department": "science",
+    "username": "Tolani Taye",
+    "department": "Art",
     "year": "SSS 2",
     "phone": "07079806360",
-    "gender": "Male"
+    "gender": "Female"
   },
   {
     "id": 9,
@@ -83,10 +83,10 @@ export default
   },
   {
     "id": 0,
-    "username": "Oyibo Daniel Oghenekevwe",
+    "username": "Rodiat Abdul",
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
-    "gender": "Male"
+    "gender": "Female"
   },
 ]

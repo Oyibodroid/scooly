@@ -1,11 +1,9 @@
-import students from "@data/students";
-import StudentProfile from "./page";
+// import StudentDetail from "../[id]";
 
-
-export default function StudentProfileLayout(){
-    return(
+export default function StudentDetailLayout({children}){
+    return ( 
         <>
-        <StudentProfile students={students}/>
+            {children}
         </>
-    )
+     );
 }
