@@ -7,7 +7,8 @@ export default
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
-    "gender": "Male"
+    "gender": "Male",
+    "email": "oyibodaniel247@gmail.com"
   },
   {
     "id": 3,
@@ -15,7 +16,8 @@ export default
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
-    "gender": "Female"
+    "gender": "Female",
+    "email": "oyibodaniel247@gmail.com"
   },
   {
     "id": 309,
@@ -23,7 +25,8 @@ export default
     "department": "science",
     "year": "SSS 2",
     "phone": "07079806360",
-    "gender": "Male"
+    "gender": "Male",
+    "email": "oyibodaniel247@gmail.com"
   },
   {
     "id": 398,

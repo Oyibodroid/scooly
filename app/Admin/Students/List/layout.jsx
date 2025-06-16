@@ -4,7 +4,7 @@ import { PlusIcon } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import Breadcrumb from "@components/Breadcrumb";
 import students from "@data/students.js";
-import StudentTable from "../../../../components/StudentTable";
+import StudentTable from "@components/StudentTable";
 import "@/styles/globals.css"
 
 export default function StudentLayout() {
@@ -31,7 +31,7 @@ export default function StudentLayout() {
               Download pdf
             </Button>
             <Button variant="blue" className="rounded-full font-bold text-white">
-              <PlusIcon className="text-white stroke-white"/>
+              <a href="./Add"><PlusIcon className="text-white stroke-white"/></a>
             </Button>
           </div>
         </div>

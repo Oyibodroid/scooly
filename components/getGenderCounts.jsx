@@ -32,8 +32,8 @@ const GenderDonutChart = ({ students = [] }) => {
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={60}
-            outerRadius={130}
+            innerRadius={100}
+            outerRadius={120}
             paddingAngle={0}
             dataKey="value"
           >

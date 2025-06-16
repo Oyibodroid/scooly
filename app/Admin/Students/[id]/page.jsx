@@ -1,5 +1,6 @@
 // app/Admin/Students/[id]/page.jsx
 import students from "@/data/students.js";
+import { Phone } from "lucide-react";
 
 export async function generateStaticParams() {
   return students.map((student) => ({
@@ -15,15 +16,29 @@ export default function StudentDetail({ params }) {
   }
 
   return (
-    <div className="p-6">
+    <div className=" p-4">
       <h1 className="text-2xl font-bold mb-4">Student Details</h1>
-      <div className="space-y-2">
-        <p><strong>ID:</strong> {student.id}</p>
-        <p><strong>Username:</strong> {student.username}</p>
-        <p><strong>Year:</strong> {student.year}</p>
-        <p><strong>Department:</strong> {student.department}</p>
-        <p><strong>Phone:</strong> {student.phone}</p>
-        <p><strong>Gender:</strong> {student.gender}</p>
+
+      <div className="w-2/3 grid grid-cols-2 gap-4">
+        <div className="bg-white flex flex-col items-center p-4 rounded-lg shadow-lg">
+          <img
+            className="rounded-full object-cover w-40 h-40"
+            src={
+              student.gender === "Male"
+                ? "/images/male-avatar.svg"
+                : "/images/female-avatar.svg"
+            }
+            alt=""
+          />
+          <p className="text-xl font-bold">{student.username}</p>
+          <p className="text-indigo-600 text-md flex">{student.phone}</p>
+          <p className="text-indigo-600 text-[10px] flex">{student.email}</p>
+        </div>
+
+        <div className="bg-white flex-col rounded-lg p-4">
+          <p className="heading">General Info</p>
+
+        </div>
       </div>
     </div>
   );
