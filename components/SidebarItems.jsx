@@ -22,23 +22,22 @@ export default function SidebarItems() {
       <div className="flex lg:flex-col w-full justify-between">
         <div>
           <SidebarItem
-            route="/Admin"
+            route="/admin"
             icon={<LayoutDashboard size={20} />}
             alert
             text="Dashboard"
             id="Dashboard"
-            // activeItem={}
-            // setActiveItem={}
+            activeItem={false}
+            setActiveItem={false}
           />
         </div>
 
         <div className="relative">
           <SidebarItem
-            // route=" "
             handleClick
             icon={<GraduationCap size={20} />}
             id="Students"
-            text="Students"
+            text="students"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
@@ -50,7 +49,7 @@ export default function SidebarItems() {
             handleClick
             icon={<Book size={20} />}
             id="Teacher"
-            text="Teacher"
+            text="teacher"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
@@ -58,7 +57,7 @@ export default function SidebarItems() {
 
         <div>
           <SidebarItem
-            route="/Admin/Finance"
+            route="/admin/finance"
             icon={<Receipt size={20} />}
             alert
             text="Finance"
@@ -68,7 +67,7 @@ export default function SidebarItems() {
 
         <div>
           <SidebarItem
-            route="/Admin/Results"
+            route="/admin/results"
             icon={<BookMarked size={20} />}
             text="Results"
             id="Results"
@@ -77,7 +76,7 @@ export default function SidebarItems() {
 
         <div>
           <SidebarItem
-            route="/Admin/Attendance"
+            route="/admin/attendance"
             icon={<CheckSquare size={20} />}
             id="Attendance"
             text="Attendance"
@@ -86,7 +85,7 @@ export default function SidebarItems() {
 
         <div>
           <SidebarItem
-            route="/Admin/Message"
+            route="/admin/message"
             icon={<MessageCircle size={20} />}
             id="Message"
             text="Message"
@@ -99,7 +98,7 @@ export default function SidebarItems() {
           icon={<SettingsIcon size={20} />}
           text="Settings"
           id="Settings"
-          route="/Admin/Settings"
+          route="/admin/settings"
         />
       </div>
     </>

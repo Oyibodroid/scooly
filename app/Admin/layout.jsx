@@ -14,7 +14,7 @@ const RootLayout = ({ children }) => {
   
   return (
     <html lang="en">
-      <body className="font-sans bg-slate-100">
+      <body className="font-sans bg-[#f9f9f9]">
         <main className="">
           <Sidebar>
             <SidebarItems/>

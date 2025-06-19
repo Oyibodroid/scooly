@@ -114,7 +114,7 @@ export function SidebarItem({
         <div className="mt-2 z-10 bg-indigo-600/50 border-white/80 shadow-lg backdrop-blur-lg">
           <SidebarItem
             icon={<List size={20} />}
-            route={`/Admin/${text}/List`}
+            route={`/admin/${text}/list`}
             text="List"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
@@ -122,7 +122,7 @@ export function SidebarItem({
           />
           <SidebarItem
             icon={<PlusIcon size={20} />}
-            route={`/Admin/${text}/Add`}
+            route={`/admin/${text}/add`}
             text="Add"
             activeItem={activeItem}
             setActiveItem={setActiveItem}

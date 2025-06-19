@@ -39,7 +39,7 @@ function StudentRow({ student }) {
       </div>
       <div>
         <Button size={`sm`} className="rounded-full hover:bg-indigo-600">
-          <a href={`/Admin/Students/${student.id}`}>
+          <a href={`/admin/students/${student.id}`}>
             <Eye className=" hover:stroke-white" />
           </a>
         </Button>
