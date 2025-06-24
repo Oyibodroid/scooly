@@ -40,9 +40,48 @@ export default function SettingsPage() {
           </div>
         </form>
       </div>
+
       <div className="card-2">
         <p className="heading text-gray-800">Change section and School fees</p>
-        <form action="">
+        <form action="" className="flex flex-col gap-6">
+
+          <hr/>
+          
+          <div className="relative">
+            <p className="label">
+              Section <span className="text-red-500">*</span>
+            </p>
+            <select className="input py-2" name="academicSection" id="academicSection">
+              <option value="">--choose--</option>
+            </select>
+          </div>
+          
+          <div className="relative">
+            <p className="label">
+              Term <span className="text-red-500">*</span>
+            </p>
+            <select className="input py-2" name="term" id="term">
+              <option value="">--choose--</option>
+            </select>
+          </div>
+          
+          <div className="relative">
+            <p className="label">
+              Result Access <span className="text-red-500">*</span>
+            </p>
+            <select className="input py-2" name="resultAccess" id="resultAccess">
+              <option value="0">0%</option>
+              <option value="10">10%</option>
+              <option value="25">25%</option>
+              <option value="50">50%</option>
+              <option value="75">75%</option>
+              <option value="100">100%</option>
+            </select>
+          </div>
+
+          <div className="flex justify-end">
+            <Button variant="blue" className="px-4 rounded-md">Update</Button>
+          </div>
 
         </form>
       </div>
