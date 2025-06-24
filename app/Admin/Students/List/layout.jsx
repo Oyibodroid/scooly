@@ -31,7 +31,7 @@ export default function StudentLayout() {
               Download pdf
             </Button>
             <Button variant="blue" className="rounded-full font-bold text-white">
-              <a href="./Add"><PlusIcon className="text-white stroke-white"/></a>
+              <a href="./add"><PlusIcon className="text-white stroke-white"/></a>
             </Button>
           </div>
         </div>

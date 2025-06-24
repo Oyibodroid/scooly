@@ -2,20 +2,72 @@
 
 import { useState } from "react";
 
-function handleSubmit(e) {
-  e.preventDefault();
-}
 export default function AddStudentPage() {
+  function validate() {
+    const newErrors = {};
+
+    if (!formData.FirstName.trim())
+      newErrors.FirstName = "enter your first name";
+    if (!formData.LastName.trim()) newErrors.LastName = `enter your last name`;
+    if (!formData.Gender.trim()) newErrors.Gender = "choose your gender";
+    if (!formData.Phone.trim()) newErrors.Phone = "enter your phone number";
+    if (!formData.Email.trim()) newErrors.Email = "enter your email address";
+    if (!formData.State.trim()) newErrors.State = "enter your state of origin";
+    if (!formData.Section.trim()) newErrors.Section = "choose your section";
+    if (formData.Section && !formData.Class.trim())
+      newErrors.Class = "choose your class";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }
+
+  const [errors, setErrors] = useState({});
+
   const [formData, setFormData] = useState({
     FirstName: "",
     LastName: "",
     Gender: "",
-    Phone: {},
+    Phone: "",
     Email: "",
     Address: "",
     State: "",
     Section: "",
+    Class: "",
+    Department: "",
   });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (validate()) {
+      try {
+        const response = fetch("/api/add-student", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+          throw new Error("Response was not ok");
+        }
+
+        const data = await response.json();
+        console.log("Form sumbitted successfully:", data);
+
+        setFormData({
+          FirstName: "",
+          LastName: "",
+          Gender: "",
+          Phone: "",
+          Email: "",
+          Address: "",
+          State: "",
+          Section: "",
+          Class: "",
+          Department: "",
+        });
+      } catch {}
+    }
+  }
 
   function handleChange(e) {
     const { name, value, checked, type } = e.target;
@@ -26,22 +78,6 @@ export default function AddStudentPage() {
         [name]: type === "checkbox" ? checked : value,
       };
     });
-  }
-
-  function ClassTrue() {
-    return (
-      <div className="relative full">
-        <select name="Class" id="Class" className="input py-3">
-          <option value="">--Choose--</option>
-          {formData.Section === "KG" && (
-            <>
-              <option value="KG 1">KG 1</option>
-              <option value="KG 2">KG 2</option>
-            </>
-          )}
-        </select>
-      </div>
-    );
   }
 
   return (
@@ -58,6 +94,9 @@ export default function AddStudentPage() {
           <p className="label">
             First Name <span className="text-red-500">*</span>
           </p>
+          {errors.FirstName && (
+            <p className="text-red-500 text-sm">{errors.FirstName}</p>
+          )}
         </div>
 
         <div className="relative w-full">
@@ -71,6 +110,9 @@ export default function AddStudentPage() {
           <p className="label">
             Last Name <span className="text-red-500">*</span>
           </p>
+          {errors.LastName && (
+            <p className="text-red-500 text-sm">{errors.LastName}</p>
+          )}
         </div>
 
         <div className="relative w-full">
@@ -88,6 +130,9 @@ export default function AddStudentPage() {
           <p className="label">
             Gender <span className="text-red-500">*</span>
           </p>
+          {errors.Gender && (
+            <p className="text-red-500 text-sm">{errors.Gender}</p>
+          )}
         </div>
 
         <div className="relative w-full">
@@ -101,6 +146,9 @@ export default function AddStudentPage() {
           <p className="label">
             Phone <span className="text-red-500">*</span>
           </p>
+          {errors.Phone && (
+            <p className="text-red-500 text-sm">{errors.Phone}</p>
+          )}
         </div>
       </div>
 
@@ -116,6 +164,9 @@ export default function AddStudentPage() {
           <p className="label">
             Email <span className="text-red-500">*</span>
           </p>
+          {errors.Email && (
+            <p className="text-red-500 text-sm">{errors.Email}</p>
+          )}
         </div>
 
         <div className="relative w-full">
@@ -123,6 +174,7 @@ export default function AddStudentPage() {
             type="text"
             value={formData.Address}
             className="input py-3"
+            name="Address"
             onChange={handleChange}
           />
           <p className="label">Residential Address</p>
@@ -131,11 +183,17 @@ export default function AddStudentPage() {
         <div className="relative w-full">
           <input
             type="text"
+            name="State"
             className="input py-3"
-            value={formData.State}
             onChange={handleChange}
+            value={formData.State}
           />
-          <p className="label">State of Origin <span className="text-red-500">*</span></p>
+          <p className="label">
+            State of Origin <span className="text-red-500">*</span>
+          </p>
+          {errors.State && (
+            <p className="text-red-500 text-sm">{errors.State}</p>
+          )}
         </div>
       </div>
 
@@ -155,12 +213,19 @@ export default function AddStudentPage() {
             <option value="JSS">Junior Secondary School</option>
             <option value="SSS">Senior Secondary School</option>
           </select>
-          <p className="label">Section <span className="text-red-500">*</span></p>
+          <p className="label">
+            Section <span className="text-red-500">*</span>
+          </p>
+          {errors.Section && (
+            <p className="text-red-500 text-sm">{errors.Section}</p>
+          )}
         </div>
 
         {![""].includes(formData.Section) && (
           <div className="relative w-full">
-            <p className="label">Class <span className="text-red-500">*</span></p>
+            <p className="label">
+              Class <span className="text-red-500">*</span>
+            </p>
             <select
               name="Class"
               id="Class"
@@ -168,7 +233,6 @@ export default function AddStudentPage() {
               value={formData.Class}
               onChange={handleChange}
             >
-              <option value="">--Choose--</option>
               {["KG"].includes(formData.Section) && (
                 <>
                   <option value="KG 1">KG 1</option>
@@ -206,17 +270,25 @@ export default function AddStudentPage() {
                 </>
               )}
             </select>
+            {errors.Class && (
+              <p className="text-red-500 text-sm">{errors.Class}</p>
+            )}
           </div>
         )}
 
         {["SSS"].includes(formData.Section) && (
           <div className="relative w-full">
-            <p className="label">Department <span className="text-red-500">*</span></p>
+            <p className="label">
+              Department <span className="text-red-500">*</span>
+            </p>
             <select name="Department" className="input py-3" id="Department">
               <option value="Science">Science</option>
               <option value="Arts">Arts</option>
               <option value="Commercial">Commercial</option>
             </select>
+            {errors.Department && (
+              <p className="text-red-500 text-sm">{errors.Department}</p>
+            )}
           </div>
         )}
       </div>

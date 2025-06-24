@@ -69,8 +69,8 @@ export default function AddTeacherPage() {
           throw new Error("Network response was not ok");
         }
 
-        // const data = await response.json();
-        // console.log(" Form submitted successfully:", data);
+        const data = await response.json();
+        console.log(" Form submitted successfully:", data);
 
         setModal(true);
         setTimeout(() => {
