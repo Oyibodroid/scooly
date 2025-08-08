@@ -2,7 +2,8 @@
 
 import Button from "@/components/Button";
 import Image from "@node_modules/next/image";
-import { Eye, EyeOff, Edit } from "lucide-react";
+import Link from "next/link"
+import { Eye, Trash2Icon } from "lucide-react";
 
 function StudentRow({ student }) {
   const avatar =
@@ -37,15 +38,22 @@ function StudentRow({ student }) {
       <div>
         <p>{student.gender}</p>
       </div>
-      <div>
-        <Button size={`sm`} className="rounded-full hover:bg-indigo-600">
-          <a href={`/admin/students/${student.id}`}>
-            <Eye className=" hover:stroke-white" />
-          </a>
-        </Button>
-        <Button>
-          <Edit />
-        </Button>
+      <div className="flex items-center gap-3">
+        <div className="relative">
+          <Link href={`/admin/students/${student.id}`}>
+            <Eye size={18}/>
+          </Link>
+          <span             className={`
+              absolute top-[-70%] left-[-90%] lg:top-0 lg:left-full rounded-md px-2 py-1 font-bold
+              ml-6 bg-indigo-100 text-indigo-800 text-sm 
+              invisible opacity-20 -translate-x-3 transition-all
+              hover:visible hover:opacity-100 hover:translate-x-0
+            `}>view analytics</span>          
+        </div>
+
+        <div>
+          <Trash2Icon stroke="red" size={18} className="text-sm"/>
+        </div>
       </div>
     </div>
   );

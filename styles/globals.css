@@ -6,12 +6,12 @@
 
 @layer {
   * {
-    @apply text-gray-900;
+    @apply text-gray-900 text-base;
   }
 
   .input,
   textarea {
-    @apply w-full outline outline-1 grow outline-gray-400 indent-4 rounded-sm basis-full text-gray-950 focus:bg-inherit;
+    @apply w-full outline outline-1 grow outline-gray-400 indent-4 rounded-sm basis-full text-gray-950 focus:bg-inherit focus:outline-indigo-600;
   }
 
   .card {
@@ -59,12 +59,22 @@
     grid-template-columns: 0.3fr 1fr 2fr 0.5fr 0.5fr 1fr 1fr;
   }
 
+  .react-datepicker__month-select,
+  .react-datepicker__year-select {
+    background-color: white;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid #ccc;
+    font-size: 0.875rem;
+  }
+
   .heading {
     @apply text-xl font-bold text-gray-800;
   }
 
   .flex-norm {
-    @apply flex items-center justify-between;
+    @apply flex lg:flex-row flex-col gap-4 items-center justify-between;
   }
 
   .errorMsg {
@@ -73,6 +83,26 @@
 
   .label {
     @apply block -top-1/4 bg-white absolute text-sm left-3 px-1 text-gray-400 flex-norm;
+  }
+
+  .finance-card {
+    @apply w-full flex flex-col gap-4 items-center bg-white shadow-lg p-4 rounded-lg;
+  }
+
+  .not-found-main {
+    @apply w-full min-h-full h-svh grid place-content-center bg-slate-500 text-center;
+  }
+
+  .notification-bell{
+    @apply relative
+  }
+
+  .notification-alert{
+    @apply absolute h-1 w-1 bg-indigo-600 rounded-full left-2 top-2
+  }
+
+  .notification-modal {
+    @apply absolute top-16 right-4 bg-white/50 backdrop-blur-lg p-4 rounded-lg shadow-lg z-50;
   }
 }
 

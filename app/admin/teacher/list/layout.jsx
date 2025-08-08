@@ -1,10 +1,11 @@
 import Breadcrumb from "@components/Breadcrumb";
 import Button from "@components/Button";
+import Link from "next/link"
 import { PlusIcon } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import TeacherTable from "./TeacherTable";
 import teachers from "@/data/teachers";
-import "@/styles/globals.css"
+import "@/styles/globals.css";
 
 const TeachersLayout = () => {
   return (
@@ -25,9 +26,13 @@ const TeachersLayout = () => {
           </div>
 
           <div className="flex gap-4">
-            <Button variant="blue">Download PDF</Button>
-            <Button className=" rounded-full"  variant="blue">
-              <a href="./Add"><PlusIcon className="stroke-white" /></a>
+            <Button className=" rounded-full" variant="blue">
+              Download PDF
+            </Button>
+            <Button className=" rounded-full" variant="blue">
+              <Link href="./Add">
+                <PlusIcon className="stroke-white" />
+              </Link>
             </Button>
           </div>
         </div>

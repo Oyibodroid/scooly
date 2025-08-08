@@ -1,6 +1,7 @@
 // app/Admin/Students/[id]/page.jsx
 import students from "@/data/students.js";
-import { Pen, Phone } from "lucide-react";
+import Link from "next/link"
+import { ArrowBigLeft, ArrowLeft, Pen, Phone } from "lucide-react";
 
 export async function generateStaticParams() {
   return students.map((student) => ({
@@ -16,8 +17,19 @@ export default function StudentDetail({ params }) {
   }
 
   return (
-    <div className=" p-4">
-      <h1 className="text-2xl font-bold mb-4">Student Details</h1>
+    <div className=" lg:p-4">
+      <div className="flex gap-4">
+        <Link
+          className="flex w-fit relative items-center justify-center 
+                      before:absolute before:w-full 
+                      before:h-[1px] before:bottom-3 before:invisible
+                      before:bg-slate-900 hover:underline"
+          href="./list"
+        >
+          <ArrowLeft className="inline" /> back
+        </Link>
+        <h1 className="text-2xl font-bold mb-4">Student Details</h1>
+      </div>
 
       <div className="lg:w-2/3 grid md:grid-cols-2 gap-4">
         <div className="bg-white flex flex-col items-center p-4 rounded-lg shadow-lg">

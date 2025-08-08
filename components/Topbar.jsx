@@ -1,23 +1,53 @@
-import { Bell, Focus } from "lucide-react";
+"use client"
+
+import { Bell, Focus, Lightbulb, Moon, Sun } from "lucide-react";
 import Button from "./Button";
-
-
-function NotificationModal() {
-    return(
-        e
-    )
-}
-
+import { useState } from "react";
 
 const Topbar = () => {
-    return ( 
-        <div>
-            <div className="flex justify-end items-center gap-4 p-4">
-                <Button variant="primary" className="rounded-full "><Bell/></Button>
-                <Button  variant="primary" className="rounded-full bg-white"><Focus/></Button>
+  const [lightMode, setLightMode] = useState(true);
+  const [showNotifications, setShowNotifications] = useState(true);
+
+  function toggleTheme() {
+    setLightMode((prev) => !prev);
+  }
+
+  function toggleNotifications() {
+    setShowNotifications((prev) => !prev);
+  }
+
+  return (
+    <div>
+      <div className="flex justify-end items-center gap-4 p-4">
+        <div className="notification-bell">
+          <Button variant="primary" className="rounded-full ">
+            <Bell size={20} />
+          </Button>
+          <span className="notification-alert"></span>
+          {showNotifications && (
+            <div className="notification-modal">
+              <p>You have new notifications!</p>
+              <Button onClick={toggleNotifications}>Close</Button>
             </div>
+          )}
         </div>
-     );
-}
- 
+        <div>
+          <Button variant="primary" className="rounded-full bg-white">
+            <Focus size={20} />
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={toggleTheme}
+            variant="primary"
+            className="rounded-full "
+          >
+            {lightMode ? <Sun size={20} /> : <Moon size={20} />}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default Topbar;

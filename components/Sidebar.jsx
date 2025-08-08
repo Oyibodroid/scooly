@@ -4,6 +4,7 @@ import Image from "@node_modules/next/image";
 import { ChevronFirst, ChevronLast } from "lucide-react";
 import { createContext, useContext, useState } from "react";
 import Button from "./Button";
+import Link from "next/link"
 import { usePathname } from "@node_modules/next/navigation";
 
 import {
@@ -43,43 +44,61 @@ export default function Sidebar({ children }) {
   );
 }
 
+import { useRouter } from 'next/navigation';
+// import { useContext } from 'react';
+// import { SidebarContext } from './SidebarContext'; // adjust as needed
+
+
+// import { useContext } from "react";
+// import { useRouter, usePathname } from "next/navigation";
+// import { SidebarContext } from "./Sidebar";
+// import { List, PlusIcon } from "lucide-react";
+
 export function SidebarItem({
   route,
   text,
   icon,
   alert,
-  dropped,
+  hasDropdown = false,
   id,
   activeItem,
   setActiveItem,
 }) {
   const { expanded } = useContext(SidebarContext);
   const pathname = usePathname();
-  const isActive = pathname === route;
+  const router = useRouter();
 
+  const isActive = pathname === route;
   const isOpen = activeItem === id;
 
   function handleClick(e) {
-    setActiveItem((prev) => (prev === id ? null : id)); // Toggle open/close
+    e.preventDefault();
+
+    if (hasDropdown && setActiveItem) {
+      setActiveItem((prev) => (prev === id ? null : id));
+    }
+
+    if (route) {
+      router.push(route);
+    }
   }
 
   return (
     <div>
       <a
-        href={route}
+        href={route || "#"}
         onClick={handleClick}
-        className={`
-          relative group flex items-center 
+        className={`relative group flex items-center 
           py-2 px-3 my-1 font-medium rounded-md 
           cursor-pointer transition-colors text-gray-950 hover:text-cyan-600
           ${
             isActive
               ? "bg-gradient-to-tr mr-0 mt-[-1rem] lg:mt-0 lg:mr-[-1rem] text-indigo-800 bg-white/10 backdrop-blur-md rounded-2xl border border-white/70 p-6 shadow-lg"
               : "hover:border-white/40 hover:shadow-sm"
-          }
-        `}
+          }`}
       >
-        <i className={`${isActive && `stroke-indigo-500`}`}>{icon}</i>
+        <i className={`${isActive ? "stroke-indigo-500" : ""}`}>{icon}</i>
+
         <span
           className={`overflow-hidden transition-all ${
             expanded ? "w-52 ml-3" : "w-0"
@@ -110,23 +129,23 @@ export function SidebarItem({
         )}
       </a>
 
-      {isOpen && (
+      {hasDropdown && isOpen && (
         <div className="mt-2 z-10 bg-indigo-600/50 border-white/80 shadow-lg backdrop-blur-lg">
           <SidebarItem
             icon={<List size={20} />}
             route={`/admin/${text}/list`}
             text="List"
+            id={`${id}-list`}
             activeItem={activeItem}
             setActiveItem={setActiveItem}
-            id={`${id}-list`}
           />
           <SidebarItem
             icon={<PlusIcon size={20} />}
             route={`/admin/${text}/add`}
             text="Add"
+            id={`${id}-add`}
             activeItem={activeItem}
             setActiveItem={setActiveItem}
-            id={`${id}-add`}
           />
         </div>
       )}

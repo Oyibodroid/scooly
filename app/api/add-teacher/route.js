@@ -10,7 +10,7 @@ export async function POST(request) {
       data: body,
     });
   } catch (error) {
-    console.error("❌ Error in API:", error);
+    console.error("❌Error in API:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

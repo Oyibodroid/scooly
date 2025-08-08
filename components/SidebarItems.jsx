@@ -1,4 +1,5 @@
 "use client";
+
 import { SidebarItem } from "@components/Sidebar";
 import {
   Book,
@@ -6,13 +7,11 @@ import {
   CheckSquare,
   GraduationCap,
   LayoutDashboard,
-  List,
   MessageCircle,
-  PlusIcon,
   Receipt,
   SettingsIcon,
 } from "lucide-react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 export default function SidebarItems() {
   const [activeItem, setActiveItem] = useState(null);
@@ -20,6 +19,7 @@ export default function SidebarItems() {
   return (
     <>
       <div className="flex lg:flex-col w-full justify-between">
+        {/* Dashboard */}
         <div>
           <SidebarItem
             route="/admin"
@@ -27,34 +27,36 @@ export default function SidebarItems() {
             alert
             text="Dashboard"
             id="Dashboard"
-            activeItem={false}
-            setActiveItem={false}
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
           />
         </div>
 
+        {/* Students with dropdown */}
         <div className="relative">
           <SidebarItem
-            handleClick
             icon={<GraduationCap size={20} />}
             id="Students"
             text="students"
+            hasDropdown
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
         </div>
 
+        {/* Teacher with dropdown */}
         <div className="relative">
           <SidebarItem
-            key={2}
-            handleClick
             icon={<Book size={20} />}
             id="Teacher"
             text="teacher"
+            hasDropdown
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
         </div>
 
+        {/* Finance */}
         <div>
           <SidebarItem
             route="/admin/finance"
@@ -62,36 +64,48 @@ export default function SidebarItems() {
             alert
             text="Finance"
             id="Finance"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
           />
         </div>
 
+        {/* Results */}
         <div>
           <SidebarItem
             route="/admin/results"
             icon={<BookMarked size={20} />}
             text="Results"
             id="Results"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
           />
         </div>
 
+        {/* Attendance */}
         <div>
           <SidebarItem
             route="/admin/attendance"
             icon={<CheckSquare size={20} />}
             id="Attendance"
             text="Attendance"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
           />
         </div>
 
+        {/* Messages */}
         <div>
           <SidebarItem
             route="/admin/message"
             icon={<MessageCircle size={20} />}
             id="Message"
             text="Message"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
           />
         </div>
       </div>
+
       <div>
         <hr />
         <SidebarItem
@@ -99,6 +113,8 @@ export default function SidebarItems() {
           text="Settings"
           id="Settings"
           route="/admin/settings"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
         />
       </div>
     </>

@@ -35,11 +35,13 @@ export default function AddTeacherPage() {
       newErrors.Phone = "invalid phone number";
     }
     if (
-      formData.Role == ("ClassTeacher" || "AssistantTeacher") &&
-      formData.Class === ""
+      formData.Role === ("ClassTeacher" || "AssistantTeacher") &&
+      (formData.Class === "")
     ) {
       newErrors.Class = "teacher must have a class";
     }
+
+    if(formData.Role === "SubjectTeacher" )
 
     if (formData.Sector == "") newErrors.Sector = "must be in a sector";
     if (formData.State === "") newErrors.State = "field is required";
@@ -305,6 +307,7 @@ export default function AddTeacherPage() {
             <option value="HeadTeacher">Head Teacher</option>
             <option value="ClassTeacher">Class Teacher</option>
             <option value="AssistantTeacher">Assistant Class Teacher</option>
+            <option value="SubjectTeacher">Subject Teacher</option>
           </select>
         </div>
 

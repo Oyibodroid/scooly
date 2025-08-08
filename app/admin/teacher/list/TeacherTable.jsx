@@ -11,7 +11,7 @@ function TeacherRow(teacher) {
         <p>{teacher.id}</p>
       </div>
       <div>
-        <p>{teacher.username} hello</p>
+        <p>{teacher.username}</p>
       </div>
       <div>
         <p>{teacher.salary}</p>
