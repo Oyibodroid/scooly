@@ -91,5 +91,5 @@ export default
     "year": "SSS 2",
     "phone": "07079806360",
     "gender": "Female"
-  },
+  }
 ]
