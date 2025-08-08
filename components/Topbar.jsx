@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Topbar = () => {
   const [lightMode, setLightMode] = useState(true);
-  const [showNotifications, setShowNotifications] = useState(true);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   function toggleTheme() {
     setLightMode((prev) => !prev);
@@ -20,7 +20,7 @@ const Topbar = () => {
     <div>
       <div className="flex justify-end items-center gap-4 p-4">
         <div className="notification-bell">
-          <Button variant="primary" className="rounded-full ">
+          <Button onClick={toggleNotifications} variant="primary" className="rounded-full ">
             <Bell size={20} />
           </Button>
           <span className="notification-alert"></span>

@@ -13,8 +13,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html>
-      <body className="font-sans bg-[#F5F5F5]">
+      <main>
         <section className="">
           <Sidebar>
             <SidebarItems />
@@ -26,8 +25,7 @@ const RootLayout = ({ children }) => {
             <div>{children}</div>
           </div>
         </section>
-      </body>
-    </html>
+      </main>
   );
 };
 
