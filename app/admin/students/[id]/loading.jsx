@@ -1,9 +1,10 @@
-import Modal from "@components/Modal";
-import StudentTable from "@components/StudentTable";
+
 
 const studentLoading = () => {
     return ( 
-        <StudentTable/>
+        <div>
+            <h1>Loading Student Data...</h1>
+        </div>
      );
 }
  
