@@ -1,7 +1,7 @@
 const Layout = ({children}) => {
     return (
         <html lang="en">
-            <body className="font-sans bg-[#F5F5F5]">
+            <body className="">
                 {children}
             </body>
         </html>

@@ -81,43 +81,41 @@ export default function AddStudentPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-      <div className="flex-col lg:flex-row w-full flex-norm gap-6 mt-5">
-        <div className="relative w-full">
+    <form onSubmit={handleSubmit} className="student-add-form">
+      <div className="student-add-row">
+        <div className="student-add-field">
           <input
-            className="input py-3"
+            className="student-add-input py-2"
             name="FirstName"
             onChange={handleChange}
             value={formData.FirstName}
             type="text"
           />
-          <p className="label">
-            First Name <span className="text-red-500">*</span>
+          <p className="student-add-label">
+            First Name <span className="student-add-required">*</span>
           </p>
           {errors.FirstName && (
-            <p className="text-red-500 text-sm">{errors.FirstName}</p>
+            <p className="student-add-error">{errors.FirstName}</p>
           )}
         </div>
-
-        <div className="relative w-full">
+        <div className="student-add-field">
           <input
-            className="input py-3"
+            className="student-add-input py-2"
             name="LastName"
             onChange={handleChange}
             value={formData.LastName}
             type="text"
           />
-          <p className="label">
-            Last Name <span className="text-red-500">*</span>
+          <p className="student-add-label">
+            Last Name <span className="student-add-required">*</span>
           </p>
           {errors.LastName && (
-            <p className="text-red-500 text-sm">{errors.LastName}</p>
+            <p className="student-add-error">{errors.LastName}</p>
           )}
         </div>
-
-        <div className="relative w-full">
+        <div className="student-add-field">
           <select
-            className="input py-3"
+            className="student-add-input py-2"
             name="Gender"
             onChange={handleChange}
             value={formData.Gender}
@@ -127,81 +125,79 @@ export default function AddStudentPage() {
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
-          <p className="label">
-            Gender <span className="text-red-500">*</span>
+          <p className="student-add-label">
+            Gender <span className="student-add-required">*</span>
           </p>
           {errors.Gender && (
-            <p className="text-red-500 text-sm">{errors.Gender}</p>
+            <p className="student-add-error">{errors.Gender}</p>
           )}
         </div>
-
-        <div className="relative w-full">
+        <div className="student-add-field">
           <input
             type="number"
             name="Phone"
             onChange={handleChange}
             value={formData.Phone}
-            className="input py-3"
+            className="student-add-input py-2"
           />
-          <p className="label">
-            Phone <span className="text-red-500">*</span>
+          
+          <p className="student-add-label">
+            Phone <span className="student-add-required">*</span>
           </p>
           {errors.Phone && (
-            <p className="text-red-500 text-sm">{errors.Phone}</p>
+            <p className="student-add-error">{errors.Phone}</p>
           )}
         </div>
       </div>
 
-      <div className="flex-col lg:flex-row w-full flex-norm gap-6">
-        <div className="relative w-full">
+      <div className="student-add-row">
+        <div className="student-add-field">
           <input
             type="text"
             name="Email"
-            className="input py-3"
+            className="student-add-input py-2"
             onChange={handleChange}
             value={formData.Email}
           />
-          <p className="label">
-            Email <span className="text-red-500">*</span>
+          <p className="student-add-label">
+            Email <span className="student-add-required">*</span>
           </p>
           {errors.Email && (
-            <p className="text-red-500 text-sm">{errors.Email}</p>
+            <p className="student-add-error">{errors.Email}</p>
           )}
         </div>
-
-        <div className="relative w-full">
+        <div className="student-add-field">
           <input
             type="text"
             value={formData.Address}
-            className="input py-3"
+            className="student-add-input py-2"
             name="Address"
             onChange={handleChange}
           />
-          <p className="label">Residential Address</p>
+          <p className="student-add-label">Residential Address</p>
         </div>
-
-        <div className="relative w-full">
+        <div className="student-add-field">
           <input
             type="text"
             name="State"
-            className="input py-3"
+            className="student-add-input py-2"
             onChange={handleChange}
             value={formData.State}
           />
-          <p className="label">
-            State of Origin <span className="text-red-500">*</span>
+          <p className="student-add-label">
+            State of Origin <span className="student-add-required">*</span>
           </p>
           {errors.State && (
-            <p className="text-red-500 text-sm">{errors.State}</p>
+            <p className="student-add-error">{errors.State}</p>
           )}
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row w-full flex-norm gap-6">
-        <div className="relative w-full">
+      <div className="student-add-row">
+        <div className="student-add-field">
           <select
             name="Section"
-            className="input py-3"
+            className="student-add-input py-2"
             value={formData.Section}
             onChange={handleChange}
             id="Section"
@@ -213,23 +209,23 @@ export default function AddStudentPage() {
             <option value="JSS">Junior Secondary School</option>
             <option value="SSS">Senior Secondary School</option>
           </select>
-          <p className="label">
-            Section <span className="text-red-500">*</span>
+          <p className="student-add-label">
+            Section <span className="student-add-required">*</span>
           </p>
           {errors.Section && (
-            <p className="text-red-500 text-sm">{errors.Section}</p>
+            <p className="student-add-error">{errors.Section}</p>
           )}
         </div>
 
         {![""].includes(formData.Section) && (
-          <div className="relative w-full">
-            <p className="label">
-              Class <span className="text-red-500">*</span>
+          <div className="student-add-field">
+            <p className="student-add-label">
+              Class <span className="student-add-required">*</span>
             </p>
             <select
               name="Class"
               id="Class"
-              className="input py-3"
+              className="student-add-input py-2"
               value={formData.Class}
               onChange={handleChange}
             >
@@ -271,29 +267,29 @@ export default function AddStudentPage() {
               )}
             </select>
             {errors.Class && (
-              <p className="text-red-500 text-sm">{errors.Class}</p>
+              <p className="student-add-error">{errors.Class}</p>
             )}
           </div>
         )}
 
         {["SSS"].includes(formData.Section) && (
-          <div className="relative w-full">
-            <p className="label">
-              Department <span className="text-red-500">*</span>
+          <div className="student-add-field">
+            <p className="student-add-label">
+              Department <span className="student-add-required">*</span>
             </p>
-            <select name="Department" className="input py-3" id="Department">
+            <select name="Department" className="student-add-input" id="Department">
               <option value="Science">Science</option>
               <option value="Arts">Arts</option>
               <option value="Commercial">Commercial</option>
             </select>
             {errors.Department && (
-              <p className="text-red-500 text-sm">{errors.Department}</p>
+              <p className="student-add-error">{errors.Department}</p>
             )}
           </div>
         )}
       </div>
 
-      <button type="submit" className="submit">
+      <button type="submit" className="student-add-submit">
         Submit
       </button>
     </form>

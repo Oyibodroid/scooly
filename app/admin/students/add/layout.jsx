@@ -8,7 +8,7 @@ export default function AddStudent() {
         <p className="heading text-2xl">Add Students</p>
         <Breadcrumb />
       </div>
-      <div className="bg-white mt-8 py-8 px-4 rounded-lg">
+      <div className="student-add-heading">
         <p className="heading">Basic Details</p>
         <AddStudentPage />
       </div>

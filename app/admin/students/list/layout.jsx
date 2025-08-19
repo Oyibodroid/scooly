@@ -1,4 +1,5 @@
 "use client";
+
 import Button from "@components/Button";
 import Link from "next/link";
 import { Download, PlusIcon } from "lucide-react";
@@ -13,82 +14,58 @@ export default function StudentLayout() {
   const [downloadOption, setDownloadOption] = useState(false);
 
   return (
-    <div className="main lg:pl-6">
-      <div className="flex justify-end">
+    <div className="students-list-container">
+      <div className="students-list-header">
         <Breadcrumb />
       </div>
-      <div className="flex-col lg:flex justify-between my-8">
-        <div className="mb-4">
-          <h1 className="font-bold text-3xl">SCH19538</h1>
-        </div>
 
-        <div>
-          <SearchBox />
-        </div>
+      <div className="students-list-subheader">
+        <h1 className="students-list-title">SCH19538</h1>
+        <SearchBox />
       </div>
 
-      <div className="card block">
-        <div className="flex items-center justify-between py-4">
-          <h1 className="text-xl font-bold">Students</h1>
-          <div className="flex gap-4 relative z-10">
-            <div className="">
+      <div className="students-list-card">
+        <div className="students-list-controls">
+          <h1 className="students-list-section-title">Students</h1>
+          
+          <div className="students-list-actions">
+            <div className="download-options-wrapper">
               <Button
                 variant="blue"
-                className="px-4 rounded-full w-full flex-shrink"
+                className="download-button"
                 onClick={() => setDownloadOption((curr) => !curr)}
               >
                 <Download className="stroke-white" />
               </Button>
 
-              {downloadOption && 
-              <div className={`absolute top-1/2 flex flex-col -translate-y-1/2 ${downloadOption ? "right-32" : "right-0"}`}>
-                <Button variant="glass" className=" rounded-full mb-2 hover:outline-white">.csv</Button>
-                <Button variant="glass"  className="rounded-full">.pdf</Button>
-              </div>
-              }
+              {downloadOption && (
+                <div className="download-options">
+                  <Button variant="glass" className="download-option">.csv</Button>
+                  <Button variant="glass" className="download-option">.pdf</Button>
+                </div>
+              )}
             </div>
-            <Button
-              variant="blue"
-              className="rounded-full font-bold text-white"
-            >
-              <Link href="./add">
-                <PlusIcon className="text-white stroke-white" />
-              </Link>
-            </Button>
+            
+            <Link href="./add">
+              <Button variant="blue" className="add-student-button">
+                <PlusIcon className="stroke-white" />
+              </Button>
+            </Link>
           </div>
         </div>
 
-        <div className="">
-          <div className="overflow-y-hidden bg-white rounded-lg shadow-lg">
-            <div className="student--table bg-slate-100">
-              <div>
-                <h2 className="font-bold">ID</h2>
-              </div>
-
-              <div>
-                <h2 className="font-bold">Name</h2>
-              </div>
-
-              <div>
-                <h2 className="font-bold">Class</h2>
-              </div>
-              <div>
-                <h2 className="font-bold">Department</h2>
-              </div>
-              <div>
-                <h2 className="font-bold">Mobile Number</h2>
-              </div>
-              <div>
-                <h2 className="font-bold">Gender</h2>
-              </div>
-
-              <div>
-                <h2 className="font-bold">Actions</h2>
-              </div>
-            </div>
-
-            <StudentTable students={students} />
+        <div className="students-table-wrapper">
+          <div className="students-table-header">
+            <div className="table-header-cell"><h2>ID</h2></div>
+            <div className="table-header-cell"><h2>Name</h2></div>
+            <div className="table-header-cell"><h2>Class</h2></div>
+            <div className="table-header-cell"><h2>Department</h2></div>
+            <div className="table-header-cell"><h2>Mobile Number</h2></div>
+            <div className="table-header-cell"><h2>Gender</h2></div>
+            <div className="table-header-cell"><h2>Actions</h2></div>
           </div>
+
+          <StudentTable students={students} />
         </div>
       </div>
     </div>
